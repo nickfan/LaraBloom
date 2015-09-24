@@ -1,5 +1,5 @@
 {
-    "name": "nickfan/LaraBloom",
+    "name": "nickfan/lara-bloom",
     "autoload": {
         "psr-4": {
             "Nickfan\\LaraBloom\\": "src/"
@@ -18,9 +18,9 @@
         }
     },
     "repositories": [
-            {
-                        "type": "git",
-                        "url": "https://github.com/mrspartak/php.bloom.filter.git"
-            }
+        {
+            "type": "git",
+            "url": "https://github.com/mrspartak/php.bloom.filter.git"
+        }
     ]
 }
