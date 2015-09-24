@@ -1,5 +1,5 @@
 <?php
-
+namespace Nickfan\LaraBloom;
 /**
  * Description
  *
@@ -12,8 +12,9 @@
  *
  */
 
-use Illuminate\Support\ServiceProvider;
 use Bloom;
+use Illuminate\Support\ServiceProvider;
+
 class LaraBloomServiceProvider extends ServiceProvider
 {
 
@@ -44,11 +45,16 @@ class LaraBloomServiceProvider extends ServiceProvider
     {
         //$configPath = __DIR__ . '/../config/larabloom.php';
         //$this->mergeConfigFrom($configPath, 'larabloom');
-        $this->app->bind('Nickfan\LaraBloom\LaraBloom', function ($app,$parameters=[]) {
+        $this->app->bind('Nickfan\LaraBloom\LaraBloomFactory', function ($app,$parameters=[]) {
             $parameters+=$app['config']->get('larabloom.init.default',[
                 'entries_max' => 10,
             ]);
             return new Bloom($parameters);
+        });
+        $this->app->singleton('Nickfan\LaraBloom\LaraBloom',function($app){
+            return new LaraBloom($app['config']->get('larabloom.init.default',[
+                'entries_max' => 10,
+            ]));
         });
     }
 
